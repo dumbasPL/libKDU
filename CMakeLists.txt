@@ -41,13 +41,11 @@ set(HAMAKAZE_INCLUDE_DIRS
   "${CMAKE_CURRENT_BINARY_DIR}/Source/Hamakaze"
   "${CMAKE_CURRENT_BINARY_DIR}/Source/Tanikaze"
 )
-add_library(Hamakaze STATIC ${HAMAKAZE_SOURCES})
-target_include_directories(Hamakaze 
-  PRIVATE ${HAMAKAZE_INCLUDE_DIRS}
-  PUBLIC "${CMAKE_CURRENT_BINARY_DIR}/Source/Hamakaze"
+add_library(${PROJECT_NAME} STATIC ${HAMAKAZE_SOURCES})
+target_compile_definitions(${PROJECT_NAME} PRIVATE UNICODE _UNICODE)
+target_include_directories(${PROJECT_NAME} 
+  PUBLIC ${HAMAKAZE_INCLUDE_DIRS}
 )
-target_compile_definitions(Hamakaze PRIVATE UNICODE _UNICODE)
-set_target_properties(Hamakaze PROPERTIES OUTPUT_NAME "kdu")
 
 # export library
-install(TARGETS Hamakaze)
+install(TARGETS ${PROJECT_NAME})

@@ -23,6 +23,7 @@ add_custom_command(
 # build kdu
 file(GLOB_RECURSE HAMAKAZE_SOURCES
   "override/*.cpp"
+  "public/*.cpp"
   "${CMAKE_CURRENT_BINARY_DIR}/Source/Shared/*.cpp" 
   "${CMAKE_CURRENT_BINARY_DIR}/Source/Shared/*.c"
   "${CMAKE_CURRENT_BINARY_DIR}/Source/Hamakaze/*.cpp" 
@@ -44,7 +45,8 @@ set(HAMAKAZE_INCLUDE_DIRS
 add_library(${PROJECT_NAME} STATIC ${HAMAKAZE_SOURCES})
 target_compile_definitions(${PROJECT_NAME} PRIVATE UNICODE _UNICODE)
 target_include_directories(${PROJECT_NAME} 
-  PUBLIC ${HAMAKAZE_INCLUDE_DIRS}
+  PRIVATE ${HAMAKAZE_INCLUDE_DIRS}
+  PUBLIC "public"
 )
 
 # export library

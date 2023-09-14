@@ -18,6 +18,7 @@ BOOL libKDUMapDriver(
 
     KDU_CONTEXT* provContext = KDUProviderCreate(ProviderId, HvciEnabled, NtBuildNumber, ShellVersion, ActionTypeMapDriver);
     if (!provContext) {
+        VirtualFree(pvImage, 0, MEM_RELEASE);
         return FALSE;
     }
 

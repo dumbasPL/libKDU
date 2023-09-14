@@ -59,7 +59,7 @@ HMODULE WINAPI overrideLoadLibraryEx(
 ) {
     if (wcsstr(lpLibFileName, DRV64DLL) != NULL) {
         printf_s("[$] Hello from LoadLibraryEx polyfill\r\n");
-        // return current module handle
+        // return a fake handle that we can later identify to load the correct resource
         return DRV64DLL_FAKE_HANDLE;
     }
     return LoadLibraryExW(lpLibFileName, hFile, dwFlags);

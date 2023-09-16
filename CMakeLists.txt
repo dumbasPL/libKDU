@@ -9,6 +9,8 @@ file(APPEND "${CMAKE_CURRENT_BINARY_DIR}/Source/Hamakaze/global.h" "\n#include <
 
 # generate resource files
 add_executable(ResourceGenerator ResourceGenerator/ResourceGenerator.cpp)
+set_target_properties(ResourceGenerator PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR})
+
 add_custom_command(
   OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/Resources/Hamakaze.cpp"
   COMMAND ResourceGenerator "${CMAKE_CURRENT_BINARY_DIR}/Resources/Hamakaze.cpp" "${CMAKE_CURRENT_BINARY_DIR}/Source/Hamakaze/resource.rc" "Hamakaze"

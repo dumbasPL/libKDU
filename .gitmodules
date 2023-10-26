@@ -1,3 +1,4 @@
 [submodule "KDU"]
 	path = KDU
 	url = https://github.com/hfiref0x/KDU.git
+	branch = master

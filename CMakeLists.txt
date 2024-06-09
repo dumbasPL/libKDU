@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.21 FATAL_ERROR)
-project(libKDU VERSION 1.4.1)
+project(libKDU VERSION 1.4.2)
 
 enable_language(ASM_MASM)
 

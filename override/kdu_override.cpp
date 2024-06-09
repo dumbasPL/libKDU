@@ -46,8 +46,12 @@ FARPROC WINAPI overrideGetProcAddress(
     _In_ LPCSTR lpProcName
 ) {
     if (hModule == DRV64DLL_FAKE_HANDLE && strstr(lpProcName, "gProvTable") != NULL) {
-        printf_s("[$] Hello from GetProcAddress polyfill\r\n");
+        printf_s("[$] Hello from GetProcAddress polyfill (gProvTable)\r\n");
         return (FARPROC)&gProvTable;
+    }
+    if (hModule == DRV64DLL_FAKE_HANDLE && strstr(lpProcName, "gVersion") != NULL) {
+        printf_s("[$] Hello from GetProcAddress polyfill (gVersion)\r\n");
+        return (FARPROC)&gVersion;
     }
     return GetProcAddress(hModule, lpProcName);
 }

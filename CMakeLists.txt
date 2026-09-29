@@ -1,9 +1,10 @@
 cmake_minimum_required(VERSION 3.21 FATAL_ERROR)
-project(libKDU VERSION 1.4.2)
+project(libKDU VERSION 1.5.0)
 
 enable_language(ASM_MASM)
 
 # prepare files
+file(REMOVE_RECURSE "${CMAKE_CURRENT_BINARY_DIR}/Source")
 file(COPY "KDU/Source" DESTINATION ".")
 file(APPEND "${CMAKE_CURRENT_BINARY_DIR}/Source/Hamakaze/global.h" "\n#include <kdu_override.h>")
 
@@ -46,6 +47,8 @@ set(HAMAKAZE_INCLUDE_DIRS
 )
 add_library(${PROJECT_NAME} STATIC ${HAMAKAZE_SOURCES})
 target_compile_definitions(${PROJECT_NAME} PRIVATE UNICODE _UNICODE)
+# match upstream KDU.vcxproj ConformanceMode
+target_compile_options(${PROJECT_NAME} PRIVATE $<$<COMPILE_LANGUAGE:C,CXX>:/permissive->)
 target_include_directories(${PROJECT_NAME} 
   PRIVATE ${HAMAKAZE_INCLUDE_DIRS}
   PUBLIC "public"

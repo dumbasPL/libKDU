@@ -13,6 +13,9 @@ typedef std::unordered_map<int, std::tuple<size_t, const unsigned char*>> Resour
 extern ResourcesMap Hamakaze_resources;
 extern ResourcesMap Tanikaze_resources;
 
+// upstream defines this in main.cpp, which libKDU does not build
+BOOL g_UseLA57 = FALSE;
+
 PBYTE overrideQueryResourceData(
     _In_ ULONG_PTR ResourceId,
     _In_ PVOID DllHandle,

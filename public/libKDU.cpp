@@ -10,6 +10,8 @@ BOOL libKDUMapDriver(
     _In_opt_ LPWSTR DriverObjectName, 
     _In_opt_ LPWSTR DriverRegistryPath
 ) {
+    g_UseLA57 = supIsLA57Enabled();
+
     DWORD SizeOfImage = 0;
     PVOID pvImage = PELoaderLoadImage(Buffer, &SizeOfImage);
     if (!pvImage) {
